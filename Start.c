@@ -1,17 +1,31 @@
 #include <stdio.h>
 
 int main() {
-    char a; //initialising the imput from the user
     
-    printf("text to encrypt: ");
-    scanf("%s", &a);
+        
+        FILE *input;
     
-    if(a > 97){
-    a = a-32; //converts all lowercase imputs into upercase imputs
-    }
-
-    printf("read: %c\n", a);
-
+        input = fopen("Input", "r"); //opening the file input
+    
+        while(feof(input) == 0){
+        char c; //initialising the imput from the user
+        fscanf(input, "%c", &c);
+       
+        
+       
+      
+            if(c > 96){
+                c = c-32; //converts all lowercase imputs into upercase imputs
+            }
+            if(c > 65 && c < 91){
+                c = c - 1; //roatates the ascii code of each character down by 1
+            }
+            else if(c == 65){
+                c = c + 25;
+            }
+            printf("%c", c);
+        }
+        
    
     
     return 0;
