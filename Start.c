@@ -5,7 +5,7 @@ int main() {
         
         FILE *input;
     
-        input = fopen("Input", "r"); //opening the file input
+        input = fopen("input.txt", "r"); //opening the file input
     
         while(feof(input) == 0){
         char c; //initialising the imput from the user
@@ -29,4 +29,5 @@ int main() {
    
     
     return 0;
+    
 }
