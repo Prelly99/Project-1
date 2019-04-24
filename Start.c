@@ -4,13 +4,13 @@ int main() {
     
     char menu; //initialing the input from the user
     //menu for user to choose which option they want to pick
-    printf("enter 'a' for caesar cipher encryption\nenter 'b' for caesar cipher decryption\n");
+    printf("Enter 'a' for caesar cipher encryption\nEnter 'b' for caesar cipher decryption\nEnter 'c' for caesar cipher decryption without a key\n");
     scanf("%c", &menu); //readng the input from the user on which option they want
     
     if(menu == 'a'){//if the user enters 'a', this section of code will run
     
         int key;// initialising the key entered by the user
-        printf("enter key ", key);
+        printf("Enter key ", key);
         scanf("%d", &key); 
         
         FILE *input;//creating a pointer to the file input
@@ -24,8 +24,8 @@ int main() {
         
        
       
-            if(c > 96){
-                c = c - 32; //converts all lowercase imputs into upercase imputs
+            if(c > 96 && c < 123){
+                c = c - 32; //converts all lowercase inputs into upercase inputs
             }
             if(c > 64 && c < 91){
                 c = c - key; //roatates the ascii code of each character down by the given key
@@ -42,7 +42,7 @@ int main() {
        
        int key;
     
-        printf("enter key ", key);
+        printf("Enter key ", key);
         scanf("%d", &key);
     
     
@@ -59,17 +59,101 @@ int main() {
         
         
       
-            if(c > 96){
+            if(c > 96 && c < 123){
                 c = c - 32; //converts all lowercase imputs into upercase inputs
             }
             if(c > 64 && c < 91){
-                c = c + key; //roatates the ascii code of each character down by entered key
+                c = c + key; //roatates the ascii code of each character up by entered key
                 if(c > 90){
                     c = c - 26;
                 }
             }
                 printf("%c", c);
         }
+   }
+   if(menu == 'c'){
+       
+       int letter[25];
+    int count;
+    for(count = 0; count < 26; count ++){
+        letter[count] = 0;
+    }
+
+    FILE *input;
+
+    input = fopen("input.txt", "r"); //opening the file input
+        
+    char c = 0; //initialising the imput from the user
+    int a = 0; //initialise array variable index
+    
+    while(feof(input) == 0){
+        
+        fscanf(input, "%c", &c);
+        if(c > 96 && c < 123){
+            c = c - 32;
+        }
+        if(c > 64 && c < 91){
+            c = c - 65;
+            a = c;//capturing char type into an int type
+            letter[a]++;//incriment count of this letter
+        }
+    
+    
+    
+    }
+        
+    int max = 0;//intitialise index for most frequent letter
+    
+    for(count = 1; count < 26; count++){//loop through all 26 uppercase letter
+        if(letter[max] < letter[count]){//test current max against next letter
+            max = count;//if condition is true, current letter is new max frequency
+        }
+    }
+    
+    int freq = 0;//declaring ascii value of the most frequent letter
+    int key = 0;
+    char x = 'e';
+    
+    freq = max + 65;
+    printf("enter a letter ");
+    scanf("%c", &x);
+    if(x < 123 && x > 96){
+        x = x - 32;
+    }   
+    
+    key = freq - x;
+    key = 26 - key;
+     if(key > 25){
+        key = key - 26;
+    }
+    if(key < 0){
+        key = 0 - key;
+    }
+   
+    
+    printf("freq = '%d'\n", freq); 
+    printf("key is %d\n", key);
+    input = fopen("input.txt", "r"); //opening the file input
+    
+        while(feof(input) == 0){
+        //char c; //initialising the input from the user
+        fscanf(input, "%c", &c);
+        
+        
+      
+            if(c > 96 && c < 123){
+                c = c - 32; //converts all lowercase inputs into uppercase inputs
+            }
+            if(c > 64 && c < 91){
+                c = c + key; //roatates the ascii code of each character up by entered key
+                if(c > 90){
+                    c = c - 26;
+                }
+            }
+                printf("%c", c);
+        }
+    
+    
    }
     
     return 0;
