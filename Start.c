@@ -10,7 +10,7 @@ int main() {
     if(menu == 'a'){//if the user enters 'a', this section of code will run
     
         int key;// initialising the key entered by the user
-        printf("Enter key ", key);
+        printf("Enter key ");
         scanf("%d", &key); 
         
         FILE *input;//creating a pointer to the file input
@@ -42,7 +42,7 @@ int main() {
        
        int key;
     
-        printf("Enter key ", key);
+        printf("Enter key ");
         scanf("%d", &key);
     
     
@@ -73,7 +73,8 @@ int main() {
    }
    if(menu == 'c'){
        
-       int letter[25];
+   
+    int letter[25];
     int count;
     for(count = 0; count < 26; count ++){
         letter[count] = 0;
@@ -83,7 +84,7 @@ int main() {
 
     input = fopen("input.txt", "r"); //opening the file input
         
-    char c = 0; //initialising the imput from the user
+    char c = 0; //initialise the input from the user
     int a = 0; //initialise array variable index
     
     while(feof(input) == 0){
@@ -94,8 +95,8 @@ int main() {
         }
         if(c > 64 && c < 91){
             c = c - 65;
-            a = c;//capturing char type into an int type
-            letter[a]++;//incriment count of this letter
+            a = c; //coerce char type into an int type
+            letter[a]++; //increment count of this letter
         }
     
     
@@ -112,12 +113,12 @@ int main() {
     
     int freq = 0;//declaring ascii value of the most frequent letter
     int key = 0;
-    char x = 'e';
+    char x;
     
     freq = max + 65;
-    printf("enter a letter ");
+    printf("Enter a letter to substitute for decryption: ");
     scanf("%c", &x);
-    if(x < 123 && x > 96){
+    if(x > 96 && x < 123){
         x = x - 32;
     }   
     
@@ -152,10 +153,8 @@ int main() {
             }
                 printf("%c", c);
         }
-    
-    
-   }
-    
+    }
+
     return 0;
     
 }
