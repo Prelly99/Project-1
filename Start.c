@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+// function prototype no.1
+int most_freq_letter(char *file, char *op);
+
 int main() {
     
     char menu; //initialing the input from the user
@@ -73,29 +76,87 @@ int main() {
    }
    if(menu == 'c'){
        
+    int ret = 0;//declaring the most frequent letter with a numer between 0 and 25
+    int freq = 0;//declaring ascii value of the most frequent letter
+    int key = 0;//declaring the key for the rotation cipher
+    char x;//declaring the input from the user
+    
+    ret = most_freq_letter("input.txt", "r");//calling fuction no.1
+
+    
+    freq = ret + 65;//makes most common value an ascii character
+   
+    printf("Enter a letter to substitute for decryption: ");//enter letter in order of commonality
+    scanf("%c", &x);
+    
+    if(x > 96 && x < 123){
+        x = x - 32;//convert input from user to capital letters 
+    }   
+    
+    key = freq - x;
+    key = 26 - key;//gets the value for the decription key
+     if(key > 25){
+        key = key - 26;
+    }
+    if(key < 0){
+        key = 0 - key;
+    }
+   
+    
+    printf("freq = '%d'\n", freq); 
+    printf("key is %d\n", key);
+    
+    FILE *input;
+    input = fopen("input.txt", "r"); //opening the file input
+    
+        while(feof(input) == 0){
+        char c; //initialising the input from the user
+        fscanf(input, "%c", &c);//scan input from file
+        
+        
+      
+            if(c > 96 && c < 123){
+                c = c - 32; //converts all lowercase inputs into uppercase inputs
+            }
+            if(c > 64 && c < 91){
+                c = c + key; //roatates the ascii code of each character up by entered key
+                if(c > 90){
+                    c = c - 26;//moves letters to the front that fall off the back
+                }
+            }
+                printf("%c", c);
+        }
+    }
+
+    return 0;
+    
+}
+   
+
+int most_freq_letter(char *file, char *op) {
    
     int letter[25];
     int count;
-    for(count = 0; count < 26; count ++){
+    for(count = 0; count < 26; count ++){    //initialise array  
         letter[count] = 0;
     }
 
     FILE *input;
 
-    input = fopen("input.txt", "r"); //opening the file input
+    input = fopen(file, op); //opening the file input
         
     char c = 0; //initialise the input from the user
     int a = 0; //initialise array variable index
     
-    while(feof(input) == 0){
-        
+    while(feof(input) == 0){        //parse input text by incrementing
+                                    //each letter on each occurrence
         fscanf(input, "%c", &c);
         if(c > 96 && c < 123){
             c = c - 32;
         }
         if(c > 64 && c < 91){
             c = c - 65;
-            a = c; //coerce char type into an int type
+            a = c; //move char type into an int type
             letter[a]++; //increment count of this letter
         }
     
@@ -111,50 +172,5 @@ int main() {
         }
     }
     
-    int freq = 0;//declaring ascii value of the most frequent letter
-    int key = 0;
-    char x;
-    
-    freq = max + 65;
-    printf("Enter a letter to substitute for decryption: ");
-    scanf("%c", &x);
-    if(x > 96 && x < 123){
-        x = x - 32;
-    }   
-    
-    key = freq - x;
-    key = 26 - key;
-     if(key > 25){
-        key = key - 26;
-    }
-    if(key < 0){
-        key = 0 - key;
-    }
-   
-    
-    printf("freq = '%d'\n", freq); 
-    printf("key is %d\n", key);
-    input = fopen("input.txt", "r"); //opening the file input
-    
-        while(feof(input) == 0){
-        //char c; //initialising the input from the user
-        fscanf(input, "%c", &c);
-        
-        
-      
-            if(c > 96 && c < 123){
-                c = c - 32; //converts all lowercase inputs into uppercase inputs
-            }
-            if(c > 64 && c < 91){
-                c = c + key; //roatates the ascii code of each character up by entered key
-                if(c > 90){
-                    c = c - 26;
-                }
-            }
-                printf("%c", c);
-        }
-    }
-
-    return 0;
-    
+return max;
 }
