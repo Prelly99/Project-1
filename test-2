@@ -15,10 +15,10 @@ int main() {
         scanf("%c", &c);        
         
         if(c > 96 && c < 123){
-            c = c - 32;
+            c = c - 32;//convert input into capitals
         }
         printf("%c is substituted for %c\n", c, alpha[count]);
-        c = alpha[count];
+        c = alpha[count];//assigns new letters to each letter in the string
     
     }
     
