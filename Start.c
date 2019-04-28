@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/*section c runs properly by itself but not with all the other blocks of code for some reason*/
+
 // function prototype no.1
 int most_freq_letter(char *file, char *op);
 
