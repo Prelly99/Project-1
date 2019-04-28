@@ -7,7 +7,7 @@ int main() {
     
     char menu; //initialing the input from the user
     //menu for user to choose which option they want to pick
-    printf("Enter 'a' for caesar cipher encryption\nEnter 'b' for caesar cipher decryption\nEnter 'c' for caesar cipher decryption without a key\n");
+    printf("Enter 'a' for caesar cipher encryption\nEnter 'b' for caesar cipher decryption\nEnter 'c' for caesar cipher decryption without a key\nEnter 'd' for substitution cipher encryption\nEnter 'e' for substitution cipher decryption");
     scanf("%c", &menu); //readng the input from the user on which option they want
     
     if(menu == 'a'){//if the user enters 'a', this section of code will run
@@ -127,8 +127,197 @@ int main() {
                 printf("%c", c);
         }
     }
+    if(menu == 'd'){
+        char c;
+        
+        FILE *input;
+        input = fopen("input.txt", "r");
+        while(feof(input) == 0){
+            fscanf(input, "%c", &c);
+            
+            if(c > 96 && c < 123){
+                c = c - 32;
+            }
+            if(c == 'A'){
+                c = 'Q';
+            } 
+            else if(c == 'B'){
+                c = 'W';
+            }
+            else if(c == 'C'){
+                c = 'E';
+            }
+            else if(c == 'D'){
+                c = 'R';
+            }
+            else if(c == 'E'){
+                c = 'T';
+            }
+            else if(c == 'F'){
+                c = 'Y';
+            }
+            else if(c == 'G'){
+                c = 'U';
+            }
+            else if(c == 'H'){
+                c = 'I';
+            }
+            else if(c == 'I'){
+                c = 'O';
+            }
+            else if(c == 'J'){
+                c = 'P';
+            }
+            else if(c == 'K'){
+                c = 'A';
+            }
+            else if(c == 'L'){
+                c = 'S';
+            }
+            else if(c == 'M'){
+                c = 'D';
+            }
+            else if(c == 'N'){
+                c = 'F';
+            }
+            else if(c == 'O'){
+                c = 'G';
+            }
+            else if(c == 'P'){
+                c = 'H';
+            }
+            else if(c == 'Q'){
+                c = 'J';
+            }
+            else if(c == 'R'){
+                c = 'K';
+            }
+            else if(c == 'S'){
+                c = 'L';
+            }
+            else if(c == 'T'){
+                c = 'Z';
+            }
+            else if(c == 'U'){
+                c = 'X';
+            }
+            else if(c == 'V'){
+                c = 'C';
+            }
+            else if(c == 'W'){
+                c = 'V';
+            }
+            else if(c == 'X'){
+                c = 'B';
+            }
+            else if(c == 'Y'){
+                c = 'N';
+            }
+            else if(c == 'Z'){
+                c = 'M';
+            }
+        
+            printf("%c", c);
+            
+        }
 
-    return 0;
+    }
+    if(menu == 'e'){
+        char c;
+    
+        FILE *input;
+        input = fopen("input.txt", "r");
+        while(feof(input) == 0){
+            fscanf(input, "%c", &c);
+            
+            if(c > 96 && c < 123){
+                c = c - 32;
+            }
+            if(c == 'Q'){
+                c = 'A';
+            } 
+            else if(c == 'W'){
+                c = 'B';
+            }
+            else if(c == 'E'){
+                c = 'C';
+            }
+            else if(c == 'R'){
+                c = 'D';
+            }
+            else if(c == 'T'){
+                c = 'E';
+            }
+            else if(c == 'Y'){
+                c = 'F';
+            }
+            else if(c == 'U'){
+                c = 'G';
+            }
+            else if(c == 'I'){
+                c = 'H';
+            }
+            else if(c == 'O'){
+                c = 'I';
+            }
+            else if(c == 'P'){
+                c = 'J';
+            }
+            else if(c == 'A'){
+                c = 'K';
+            }
+            else if(c == 'S'){
+                c = 'L';
+            }
+            else if(c == 'D'){
+                c = 'M';
+            }
+            else if(c == 'F'){
+                c = 'N';
+            }
+            else if(c == 'G'){
+                c = 'O';
+            }
+            else if(c == 'H'){
+                c = 'P';
+            }
+            else if(c == 'J'){
+                c = 'Q';
+            }
+            else if(c == 'K'){
+                c = 'R';
+            }
+            else if(c == 'L'){
+                c = 'S';
+            }
+            else if(c == 'Z'){
+                c = 'T';
+            }
+            else if(c == 'X'){
+                c = 'U';
+            }
+            else if(c == 'C'){
+                c = 'V';
+            }
+            else if(c == 'V'){
+                c = 'W';
+            }
+            else if(c == 'B'){
+                c = 'X';
+            }
+            else if(c == 'N'){
+                c = 'Y';
+            }
+            else if(c == 'M'){
+                c = 'Z';
+            }
+        
+            printf("%c", c);
+        
+        }
+    }
+
+return 0;    
     
 }
    
