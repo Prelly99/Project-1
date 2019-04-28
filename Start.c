@@ -131,14 +131,14 @@ int main() {
         char c;
         
         FILE *input;
-        input = fopen("input.txt", "r");
+        input = fopen("input.txt", "r"); //opening file for reading
         while(feof(input) == 0){
-            fscanf(input, "%c", &c);
+            fscanf(input, "%c", &c);//scaning input from file
             
             if(c > 96 && c < 123){
-                c = c - 32;
+                c = c - 32;//converting lowercase letters to uppercase
             }
-            if(c == 'A'){
+            if(c == 'A'){//assigning new letters to each letter read from the file
                 c = 'Q';
             } 
             else if(c == 'B'){
@@ -217,7 +217,7 @@ int main() {
                 c = 'M';
             }
         
-            printf("%c", c);
+            printf("%c", c);//printing encoded message
             
         }
 
@@ -226,14 +226,14 @@ int main() {
         char c;
     
         FILE *input;
-        input = fopen("input.txt", "r");
+        input = fopen("input.txt", "r");//opening file for reading
         while(feof(input) == 0){
-            fscanf(input, "%c", &c);
+            fscanf(input, "%c", &c);//scaning input from file
             
             if(c > 96 && c < 123){
-                c = c - 32;
+                c = c - 32;//converting lowercase letters to uppercase
             }
-            if(c == 'Q'){
+            if(c == 'Q'){//assigning new letters to each letter read from the file
                 c = 'A';
             } 
             else if(c == 'W'){
@@ -312,7 +312,7 @@ int main() {
                 c = 'Z';
             }
         
-            printf("%c", c);
+            printf("%c", c);//printing encoded message
         
         }
     }
